@@ -92,6 +92,7 @@ jobs:
         git config --local user.name "GitHub Action"
         git add package.json package-lock.json
         git commit -m "chore: bump version to ${{ steps.next-version.outputs.next }}"
+        git pull origin ${{ github.head_ref }} --rebase
         git push origin HEAD:${{ github.head_ref }}
         
     - name: Comment on PR
