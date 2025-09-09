@@ -91,10 +91,10 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git fetch origin ${{ github.head_ref }}
+        git reset --hard origin/${{ github.head_ref }}
         git add package.json package-lock.json
         git commit -m "chore: bump version to ${{ steps.next-version.outputs.next }}"
-        git pull origin ${{ github.head_ref }} --rebase || git pull origin ${{ github.head_ref }} --strategy=recursive -X theirs
-        git push origin HEAD:${{ github.head_ref }}
+        git push origin HEAD:${{ github.head_ref }} --force-with-lease
         
     - name: Comment on PR
       uses: actions/github-script@v7

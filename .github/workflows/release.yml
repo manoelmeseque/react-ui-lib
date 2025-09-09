@@ -52,8 +52,8 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git fetch origin main
-        git pull origin main --rebase
-        git push origin main --tags
+        git reset --hard origin/main
+        git push origin main --tags --force-with-lease
         
     - name: Create GitHub Release
       uses: actions/create-release@v1
