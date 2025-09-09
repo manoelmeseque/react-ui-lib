@@ -117,7 +117,7 @@ jobs:
             **Next Version**: ${{ steps.next-version.outputs.next }}
             **Version Type**: ${{ steps.version.outputs.type }}
             
-            When this PR is merged, version ${{ steps.next-version.outputs.next }} will be automatically published to NPM!`
+            When this PR is merged, version ${{ steps.next-version.outputs.next }} will be automatically released!`
           })
 
   # Job que roda quando o PR é merged
@@ -140,7 +140,6 @@ jobs:
       with:
         node-version: '20'
         cache: 'npm'
-        registry-url: 'https://registry.npmjs.org'
         
     - name: Install dependencies
       run: npm ci
@@ -148,11 +147,6 @@ jobs:
     - name: Build library
       run: npm run build
       
-    - name: Publish to npm
-      run: npm publish --access public
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        
     - name: Create GitHub Release
       uses: actions/create-release@v1
       env:
