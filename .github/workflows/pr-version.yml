@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     if: contains(github.event.pull_request.labels.*.name, 'version:patch') || contains(github.event.pull_request.labels.*.name, 'version:minor') || contains(github.event.pull_request.labels.*.name, 'version:major')
     
+    permissions:
+      contents: write
+      pull-requests: write
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -111,6 +115,10 @@ jobs:
   publish-on-merge:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && (contains(github.event.pull_request.labels.*.name, 'version:patch') || contains(github.event.pull_request.labels.*.name, 'version:minor') || contains(github.event.pull_request.labels.*.name, 'version:major'))
+    
+    permissions:
+      contents: write
+      pull-requests: write
     
     steps:
     - name: Checkout code
