@@ -90,9 +90,10 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        git fetch origin ${{ github.head_ref }}
         git add package.json package-lock.json
         git commit -m "chore: bump version to ${{ steps.next-version.outputs.next }}"
-        git pull origin ${{ github.head_ref }} --rebase
+        git pull origin ${{ github.head_ref }} --rebase || git pull origin ${{ github.head_ref }} --strategy=recursive -X theirs
         git push origin HEAD:${{ github.head_ref }}
         
     - name: Comment on PR
