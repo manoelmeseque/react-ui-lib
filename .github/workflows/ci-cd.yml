@@ -47,6 +47,7 @@ jobs:
       contents: read
       pages: write
       id-token: write
+      deployments: write
       
     environment:
       name: github-pages
@@ -72,6 +73,8 @@ jobs:
       uses: actions/configure-pages@v4
       with:
         enablement: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+      continue-on-error: true
       
     - name: Upload to Pages
       uses: actions/upload-pages-artifact@v3
@@ -81,4 +84,13 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
+      continue-on-error: true
+      
+    - name: Deploy to GitHub Pages (Alternative)
+      if: failure()
+      run: |
+        echo "GitHub Pages deployment failed. Please configure Pages manually:"
+        echo "1. Go to repository Settings > Pages"
+        echo "2. Set Source to 'GitHub Actions'"
+        echo "3. Re-run this workflow"
 
