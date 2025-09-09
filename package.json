@@ -29,7 +29,7 @@
     "release:minor": "npm run version:minor && npm run publish:npm",
     "release:major": "npm run version:major && npm run publish:npm",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build && powershell -Command \"New-Item -Path 'storybook-static/.nojekyll' -ItemType File -Force\"",
+    "build-storybook": "storybook build && node -e \"require('fs').writeFileSync('storybook-static/.nojekyll', '')\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
