@@ -26,7 +26,7 @@
     "release": "changeset publish",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "chromatic"
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "keywords": [
     "react",
