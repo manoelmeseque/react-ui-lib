@@ -1,6 +1,6 @@
 {
   "name": "@manoelmeseque/react-tw-ui",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "React UI library with TailwindCSS + shadcn",
   "author": "Manoel Meseque",
   "license": "MIT",
