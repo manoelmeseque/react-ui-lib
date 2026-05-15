@@ -26,7 +26,6 @@
     "release": "changeset publish",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "postbuild-storybook": "node -e \"require('fs').writeFileSync('storybook-static/.nojekyll', '')\"",
     "chromatic": "chromatic"
   },
   "keywords": [
