@@ -29,5 +29,3 @@ jobs:
         with:
           # The project token can be found on the "Settings" page of your Chromatic project
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          # Optional: Set the exit-zero-on-changes flag to prevent the action from failing when changes are detected
-          exitZeroOnChanges: true
